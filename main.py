@@ -18,6 +18,30 @@ for p in data2["people"]:
     print(p["name"])
 
 import pandas as pd
+bank_data = pd.read_csv("BankChurners.csv")
+print(bank_data.head())
+print(bank_data.shape)
+print(bank_data.info())
+print(bank_data.describe())
+print(bank_data.values)
+print(bank_data.columns)
+print(bank_data.index)
+
+bank_data.sort_values("Credit_Limit")
+bank_data.sort_values("Credit_Limit", ascending=False)
+bank_data.sort_values(["Credit_Limit", "Customer_Age"])
+bank_data.sort_values(["Credit_Limit", "Customer_Age"], ascending=[True, False])
+print(bank_data["Credit_Limit"])
+print(bank_data[["Credit_Limit", "Customer_Age"]])
+print(bank_data["Customer_Age"].mean())
+print(bank_data["Customer_Age"].min())
+print(bank_data["Customer_Age"].max())
+
+print(bank_data.groupby("Credit_Limit")["Customer_Age"].mean())
+print(bank_data.groupby("Credit_Limit")["Customer_Age"].agg([min, max]))
+
+
+import pandas as pd
 data = pd.read_csv("netflix_titles.csv")
 print(data.head())
 print(data.shape)
