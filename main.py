@@ -45,3 +45,4 @@ new_data1 = data.drop_duplicates(subset=["director", "cast"])
 print(data.shape, new_data1.shape)
 new_data1 = data.drop_duplicates(subset=["director", "cast", "title"])
 print(data.shape, new_data1.shape)
+
