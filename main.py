@@ -46,3 +46,50 @@ print(data.shape, new_data1.shape)
 new_data1 = data.drop_duplicates(subset=["director", "cast", "title"])
 print(data.shape, new_data1.shape)
 
+import pandas as pd
+climate_change = pd.read_csv("climate_change.csv")
+climate_change = pd.read_csv("climate_change.csv", parse_dates=["date"], index_col="date")
+import matplotlib.pyplot as plt
+fig, ax = plt.subplots()
+ax.plot(climate_change.index, climate_change["relative_temp"])
+ax.set_xlabel("Time")
+ax.set_ylabel("Relative temperature (Celsius)")
+plt.show()
+
+import matplotlib.pyplot as plt
+fig, ax = plt.subplots()
+seventies = climate_change["1970-01-01":"1979-12-31"]
+ax.plot(seventies.index, seventies["co2"])
+plt.show()
+
+import matplotlib.pyplot as plt
+fig, ax=plt.subplots()
+ax.plot(climate_change.index, climate_change["co2"], color="blue")
+ax2 = ax.twinx()
+ax2.plot(climate_change.index, climate_change["relative_temp"], color = 'red')
+plt.show()
+
+
+def plot_timeseries(axes, x, y, color, xlabel, ylabel):
+ axes.plot(x, y, color=color)
+ axes.set_xlabel(xlabel)
+ axes.set_ylabel(ylabel, color=color)
+ axes.tick_params('y', colors=color)
+fig, ax = plt.subplots()
+plot_timeseries(ax, climate_change.index, climate_change["co2"], "blue", "Time (years)", "CO2 levels")
+ax2 = ax.twinx()
+plot_timeseries(ax2, climate_change.index, climate_change["relative_temp"], "red", "Time (years)", "Relative temperature (Celsius)")
+plt.show()
+
+fig, ax = plt.subplots()
+ax.plot(climate_change.index, climate_change["relative_temp"])
+ax.annotate(">1 degree", xy=[pd.Timestamp("2015-10-06"), 1])
+plt.show()
+
+fig, ax = plt.subplots()
+plot_timeseries(ax, climate_change.index, climate_change["co2"], 'blue', "Time (years)", "CO2 levels")
+ax2 = ax.twinx()
+plot_timeseries(ax2, climate_change.index, climate_change["relative_temp"], 'red',"Time (years)", "Relative temp (Celsius)")
+ax2.annotate(">1 degree", xy=(pd.Timestamp('2015-10-06'), 1 ), xytext=(pd.Timestamp('2008-10-06'), -0.2), arrowprops={"arrowstyle":"->", "color":"gray"})
+plt.show()
+
