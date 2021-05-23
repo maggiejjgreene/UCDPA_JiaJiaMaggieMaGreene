@@ -117,3 +117,99 @@ plot_timeseries(ax2, climate_change.index, climate_change["relative_temp"], 'red
 ax2.annotate(">1 degree", xy=(pd.Timestamp('2015-10-06'), 1 ), xytext=(pd.Timestamp('2008-10-06'), -0.2), arrowprops={"arrowstyle":"->", "color":"gray"})
 plt.show()
 
+import pandas as pd
+data = {'Sym': ['APPL', 'APPL', 'APPL'],
+        'Price': [105.00, 117.05, 289.80],
+        'Date': ['2015/12/31', '2017/12/01', '2019/12/27']}
+positions = pd.DataFrame(data=data)
+print(positions)
+
+data = [{'Sym': 'APPL', 'Price': 105.00, 'Date': '2015/12/31'},
+        {'Sym': 'APPL', 'Price': 117.05, 'Date': '2017/12/01'},
+        {'Sym': 'APPL', 'Price': 289.80, 'Date': '2019/12/27'}]
+positions = pd.DataFrame(data=data)
+print(positions)
+
+data = [['APPL', 105.00, '2015/12/31'],
+        ['APPL', 117.05, '2017/12/01'],
+        ['APPL', 289.80, '2019/12/27']]
+columns = ['Sym', 'Price', 'Date']
+df = pd.DataFrame(data=data, columns=columns)
+print(df)
+
+
+names = ['Apple Inc','Coca-Cola', 'Walmart']
+print(names)
+prices = [159.54, 37.13, 71.17]
+print(prices)
+print(names[0])
+print(names[1])
+print(prices[-1])
+
+names = ['Apple Inc', 'Coca-Cola', 'Walmart']
+names_subset = ['Coca-Cola','Walmart']
+print(names_subset)
+stocks = [names, prices]
+print(stocks)
+print(stocks[1])
+print(stocks[0][1])
+print(stocks[1][2])
+prices = [159.54, 37.13, 71.17]
+prices.sort()
+print(prices)
+names.append('Amazon.com')
+print(names)
+more_elements = ['DowDuPont', 'Alphabet Inc']
+names.extend(more_elements)
+print(names)
+max_price = max(prices)
+max_index = prices.index(max_price)
+max_stock_name = names[max_index]
+print('The largest stock price is associated with ' + max_stock_name + ' and is $' + str(max_price) + '.')
+
+
+import numpy as np
+prices = [170.12, 93.29, 55.28, 145.30, 171.81, 59.50, 100.50]
+earnings = [9.2, 5.31, 2.41, 5.91, 15.42, 2.51, 6.79]
+prices_array = np.array(prices)
+earnings_array = np.array(earnings)
+print(prices_array)
+print(earnings_array)
+pe_array = np.array(prices)/np.array(earnings)
+print(pe_array)
+prices_subset_1 = prices_array[0:3]
+print(prices_subset_1)
+stock_array = np.array([prices, earnings])
+print(stock_array)
+print(stock_array.shape)
+print(stock_array.size)
+stock_array_transposed = np.transpose(stock_array)
+print(stock_array_transposed)
+print(stock_array_transposed.shape)
+print(stock_array_transposed.size)
+prices = stock_array_transposed[:, 0]
+print(prices)
+earnings = stock_array_transposed[:, 1]
+print(earnings)
+company_1 = stock_array_transposed[0, :]
+print(company_1)
+prices_mean = np.mean(prices)
+print(prices_mean)
+prices_std = np.std(prices)
+print(prices_std)
+company_ids = np.arange(1, 8, 1)
+print(company_ids)
+company_ids_odd = np.arange(1, 8, 2)
+print(company_ids_odd)
+price_mean = np.mean(prices)
+boolean_array = (prices > price_mean)
+print(boolean_array)
+above_avg = prices[boolean_array]
+print(above_avg)
+
+
+import pandas as pd
+tenis_data = pd.read_csv("tenis.csv")
+print(tenis_data.head())
+print(tenis_data.shape)
+print(tenis_data.info())
