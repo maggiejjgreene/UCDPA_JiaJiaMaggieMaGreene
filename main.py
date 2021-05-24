@@ -209,6 +209,21 @@ print(above_avg)
 
 
 import pandas as pd
+taxi_owners = pd.read_pickle("taxi_owners.p")
+print(taxi_owners.info())
+taxi_veh = pd.read_pickle("taxi_vehicles.p")
+print(taxi_veh.info())
+
+taxi_own_veh = taxi_owners.merge(taxi_veh, on="vid")
+print(taxi_own_veh.columns)
+
+taxi_own_veh = taxi_owners.merge(taxi_veh, on='vid', suffixes=("_own", "_veh"))
+print(taxi_own_veh.columns)
+
+taxi_own_veh = taxi_owners.merge(taxi_veh, on='vid', suffixes=('_own','_veh'))
+print(taxi_own_veh['fuel_type'].value_counts())
+
+import pandas as pd
 tenis_data = pd.read_csv("tenis.csv")
 print(tenis_data.head())
 print(tenis_data.shape)
