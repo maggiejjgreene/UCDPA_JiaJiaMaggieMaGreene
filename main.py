@@ -228,3 +228,4 @@ tenis_data = pd.read_csv("tenis.csv")
 print(tenis_data.head())
 print(tenis_data.shape)
 print(tenis_data.info())
+
