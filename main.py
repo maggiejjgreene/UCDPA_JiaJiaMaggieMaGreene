@@ -71,6 +71,38 @@ new_data1 = data.drop_duplicates(subset=["director", "cast", "title"])
 print(data.shape, new_data1.shape)
 
 import pandas as pd
+taxi_owners = pd.read_pickle("taxi_owners.p")
+print(taxi_owners.info())
+taxi_veh = pd.read_pickle("taxi_vehicles.p")
+print(taxi_veh.info())
+
+taxi_own_veh = taxi_owners.merge(taxi_veh, on="vid")
+print(taxi_own_veh.columns)
+
+taxi_own_veh = taxi_owners.merge(taxi_veh, on='vid', suffixes=("_own", "_veh"))
+print(taxi_own_veh.columns)
+
+taxi_own_veh = taxi_owners.merge(taxi_veh, on='vid', suffixes=('_own','_veh'))
+print(taxi_own_veh['fuel_type'].value_counts())
+
+
+import pandas as pd
+import matplotlib.pyplot as plt
+winter_data = pd.read_csv("winter.csv")
+print(winter_data.head())
+print(winter_data.shape)
+print(winter_data.info())
+
+winter_data["Medal"].hist()
+plt.show()
+winter_data["Sport"].hist()
+plt.show()
+winter_data["Gender"].hist()
+plt.show()
+winter_data["Year"].hist()
+plt.show()
+
+import pandas as pd
 climate_change = pd.read_csv("climate_change.csv")
 climate_change = pd.read_csv("climate_change.csv", parse_dates=["date"], index_col="date")
 import matplotlib.pyplot as plt
@@ -208,24 +240,5 @@ above_avg = prices[boolean_array]
 print(above_avg)
 
 
-import pandas as pd
-taxi_owners = pd.read_pickle("taxi_owners.p")
-print(taxi_owners.info())
-taxi_veh = pd.read_pickle("taxi_vehicles.p")
-print(taxi_veh.info())
 
-taxi_own_veh = taxi_owners.merge(taxi_veh, on="vid")
-print(taxi_own_veh.columns)
-
-taxi_own_veh = taxi_owners.merge(taxi_veh, on='vid', suffixes=("_own", "_veh"))
-print(taxi_own_veh.columns)
-
-taxi_own_veh = taxi_owners.merge(taxi_veh, on='vid', suffixes=('_own','_veh'))
-print(taxi_own_veh['fuel_type'].value_counts())
-
-import pandas as pd
-tenis_data = pd.read_csv("tenis.csv")
-print(tenis_data.head())
-print(tenis_data.shape)
-print(tenis_data.info())
 
