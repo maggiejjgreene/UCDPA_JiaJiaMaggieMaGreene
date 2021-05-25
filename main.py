@@ -90,6 +90,50 @@ print(taxi_own_veh['fuel_type'].value_counts())
 
 
 import pandas as pd
+temp_data = pd.read_csv("temperatures.csv")
+temperatures = temp_data
+print(temperatures)
+
+temperatures_ind = temperatures.set_index("city")
+print(temperatures_ind)
+print(temperatures_ind.reset_index())
+print(temperatures_ind.reset_index(drop=True))
+
+cities = ["Moscow", "Saint Petersburg"]
+print(temperatures[temperatures["city"].isin(["Moscow","Saint Petersburg"])])
+print(temperatures_ind.loc[["Moscow","Saint Petersburg"]])
+
+temperatures_ind = temperatures.set_index(["country","city"])
+rows_to_keep = [("Brazil","Rio De Janeiro"),("Pakistan","Lahore")]
+print(temperatures_ind.loc[rows_to_keep])
+print(temperatures_ind.sort_index())
+print(temperatures_ind.sort_index(level=["city"]))
+print(temperatures_ind.sort_index(level=["country","city"], ascending=[True, False]))
+
+temperatures_srt = temperatures_ind.sort_index()
+print(temperatures_srt.loc["Pakistan":"Russia"])
+print(temperatures_srt.loc["Lahore":"Moscow"])
+print(temperatures_srt.loc[("Pakistan","Lahore"):("Russia","Moscow")])
+print(temperatures_srt.loc[("India","Hyderabad"):("Iraq","Baghdad")])
+print(temperatures_srt.loc[:,"date":"avg_temp_c"])
+print(temperatures_srt.loc[("India","Hyderabad"):("Iraq","Baghdad"),"date":"avg_temp_c"])
+
+temperatures_bool = temperatures[( temperatures["date"] >= "2010-01-01") & (temperatures["date"] <= "2011-12-01")]
+print(temperatures_bool)
+
+temperatures_ind = temperatures.set_index("date").sort_index()
+print(temperatures_ind.loc["2010":"2011"])
+print(temperatures_ind.loc["2010-08-01":"2011-02-28"])
+print(temperatures.iloc[23,1])
+print(temperatures.iloc[:5])
+print(temperatures.iloc[:,2:4])
+print(temperatures.iloc[:5, 2:4])
+
+
+
+
+
+import pandas as pd
 import matplotlib.pyplot as plt
 winter_data = pd.read_csv("winter.csv")
 print(winter_data.head())
@@ -104,6 +148,7 @@ winter_data["Gender"].hist()
 plt.show()
 winter_data["Medal"].hist()
 plt.show()
+
 
 import pandas as pd
 climate_change = pd.read_csv("climate_change.csv")
@@ -241,6 +286,7 @@ boolean_array = (prices > price_mean)
 print(boolean_array)
 above_avg = prices[boolean_array]
 print(above_avg)
+
 
 
 
