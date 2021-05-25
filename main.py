@@ -17,6 +17,9 @@ print(data2["message"])
 for p in data2["people"]:
     print(p["name"])
 
+for x in "niceday":
+    print(x)
+
 import pandas as pd
 bank_data = pd.read_csv("BankChurners.csv")
 print(bank_data.head())
@@ -93,13 +96,13 @@ print(winter_data.head())
 print(winter_data.shape)
 print(winter_data.info())
 
-winter_data["Medal"].hist()
+winter_data["Year"].hist()
 plt.show()
 winter_data["Sport"].hist()
 plt.show()
 winter_data["Gender"].hist()
 plt.show()
-winter_data["Year"].hist()
+winter_data["Medal"].hist()
 plt.show()
 
 import pandas as pd
@@ -238,6 +241,14 @@ boolean_array = (prices > price_mean)
 print(boolean_array)
 above_avg = prices[boolean_array]
 print(above_avg)
+
+
+
+
+
+
+
+
 
 
 
