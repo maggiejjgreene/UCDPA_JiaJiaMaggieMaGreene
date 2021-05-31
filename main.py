@@ -17,8 +17,6 @@ print(data2["message"])
 for p in data2["people"]:
     print(p["name"])
 
-for x in "niceday":
-    print(x)
 
 import pandas as pd
 bank_data = pd.read_csv("BankChurners.csv")
@@ -42,6 +40,10 @@ print(bank_data["Customer_Age"].max())
 
 print(bank_data.groupby("Credit_Limit")["Customer_Age"].mean())
 print(bank_data.groupby("Credit_Limit")["Customer_Age"].agg([min, max]))
+
+
+for x in "niceday":
+    print(x)
 
 
 import pandas as pd
@@ -72,6 +74,7 @@ new_data1 = data.drop_duplicates(subset=["director", "cast"])
 print(data.shape, new_data1.shape)
 new_data1 = data.drop_duplicates(subset=["director", "cast", "title"])
 print(data.shape, new_data1.shape)
+
 
 import pandas as pd
 taxi_owners = pd.read_pickle("taxi_owners.p")
@@ -128,9 +131,6 @@ print(temperatures.iloc[23,1])
 print(temperatures.iloc[:5])
 print(temperatures.iloc[:,2:4])
 print(temperatures.iloc[:5, 2:4])
-
-
-
 
 
 import pandas as pd
@@ -196,6 +196,7 @@ ax2 = ax.twinx()
 plot_timeseries(ax2, climate_change.index, climate_change["relative_temp"], 'red',"Time (years)", "Relative temp (Celsius)")
 ax2.annotate(">1 degree", xy=(pd.Timestamp('2015-10-06'), 1 ), xytext=(pd.Timestamp('2008-10-06'), -0.2), arrowprops={"arrowstyle":"->", "color":"gray"})
 plt.show()
+
 
 import pandas as pd
 data = {'Sym': ['APPL', 'APPL', 'APPL'],
